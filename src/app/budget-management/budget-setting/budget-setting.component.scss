@@ -1,0 +1,63 @@
+@import "../../../styles/_variables.scss";
+
+$swimlane-height: 50px;
+
+.container {
+  .controls {
+    height: $swimlane-height;
+    padding: 10px 20px;
+    font-size: 15px;
+
+    label {
+      margin-right: 20px;
+    }
+
+    select {
+      padding: 5px;
+      cursor: pointer;
+    }
+  }
+
+  .swimlanes {
+    height: calc(100vh - $header-height - $swimlane-height);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+}
+
+.fixed-values {
+  flex: 1;
+  background-color: aliceblue;
+  height: 100%;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.budgets-swimlane-1 {
+  flex: 1;
+  background-color: blueviolet;
+  height: 100%;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.budgets-swimlane-2 {
+  flex: 1;
+  background-color: beige;
+  height: 100%;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.column-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+}
+
+app-budget-category-card {
+  width: 100%;
+}

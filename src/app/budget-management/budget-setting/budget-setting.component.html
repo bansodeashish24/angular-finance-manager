@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="controls">
+    <label for="account-dropdown">Select Account</label>
+    <select id="account-dropdown" [(ngModel)]="selectedAccount">
+      <option [value]="account.value" *ngFor="let account of allAccounts">
+        {{ account.title }}
+      </option>
+    </select>
+  </div>
+  <div class="swimlanes">
+    <div class="fixed-values column-flex">
+      <app-budget-category-card
+        [budgetCategory]="fixedIncome"
+      ></app-budget-category-card>
+      <app-budget-category-card
+        [budgetCategory]="fixedExpenses"
+      ></app-budget-category-card>
+    </div>
+    <div class="budgets-swimlane-1 column-flex">
+      <app-budget-category-card
+        *ngFor="
+          let budgetCategory of budgetCategories
+            | slice : 0 : firstBudgetSwimlaneEndIndex
+        "
+        [budgetCategory]="budgetCategory"
+      ></app-budget-category-card>
+    </div>
+    <div class="budgets-swimlane-2 column-flex">
+      <app-budget-category-card
+        *ngFor="
+          let budgetCategory of budgetCategories
+            | slice : firstBudgetSwimlaneEndIndex
+        "
+        [budgetCategory]="budgetCategory"
+      ></app-budget-category-card>
+    </div>
+  </div>
+</div>
