@@ -1,23 +1,54 @@
-<mat-expansion-panel
-  [expanded]="panelOpenState"
-  (opened)="panelOpenState = true"
-  (closed)="panelOpenState = false"
->
-  <mat-expansion-panel-header
-    [collapsedHeight]="'40px'"
-    [expandedHeight]="'40px'"
+<div class="category-card-container">
+  <mat-expansion-panel
+    [expanded]="panelOpenState"
+    (opened)="panelOpenState = true"
+    (closed)="panelOpenState = false"
   >
-    <mat-panel-title> {{ budgetCategory.name }} </mat-panel-title>
-    <mat-panel-description class="right-align-text">
-      {{ budgetCategory.total_amount | currency : "INR" }}
-    </mat-panel-description>
-  </mat-expansion-panel-header>
-  <table class="sub-categories">
-    <tr *ngFor="let subCategory of budgetCategory.sub_categories">
-      <td>{{ subCategory.sub_category_name }}</td>
-      <td class="right-align-text">
-        {{ subCategory.sub_category_amount | currency : "INR" }}
-      </td>
-    </tr>
-  </table>
-</mat-expansion-panel>
+    <mat-expansion-panel-header
+      [collapsedHeight]="'40px'"
+      [expandedHeight]="'40px'"
+    >
+      <mat-panel-title> {{ budgetCategory.name }} </mat-panel-title>
+      <mat-panel-description class="right-align-text">
+        {{ budgetCategory.total_amount | currency : "INR" }}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <table class="sub-categories">
+      <tr
+        *ngFor="let subCategory of budgetCategory.sub_categories"
+        [class.new-row]="subCategory.is_new_row"
+      >
+        <ng-container *ngIf="subCategory.is_new_row">
+          <td>
+            <input type="text" [(ngModel)]="subCategory.sub_category_name" />
+          </td>
+          <td class="right-align-text">
+            <input
+              type="number"
+              [(ngModel)]="subCategory.sub_category_amount"
+            />
+          </td>
+        </ng-container>
+        <ng-container *ngIf="!subCategory.is_new_row">
+          <td>{{ subCategory.sub_category_name }}</td>
+          <td class="right-align-text">
+            {{ subCategory.sub_category_amount | currency : "INR" }}
+          </td>
+        </ng-container>
+      </tr>
+    </table>
+  </mat-expansion-panel>
+  <div *ngIf="panelOpenState" class="more-options">
+    <ng-container *ngIf="isAddModeActive">
+      <mat-icon class="secondary-icon" (click)="cancelAddSubCategory()"
+        >close</mat-icon
+      >
+      <mat-icon class="secondary-icon" (click)="saveNewSubCategory()"
+        >save</mat-icon
+      >
+    </ng-container>
+    <ng-container *ngIf="!isAddModeActive">
+      <mat-icon (click)="addSubCategory()">add</mat-icon>
+    </ng-container>
+  </div>
+</div>

@@ -49,7 +49,7 @@ export class BudgetSettingComponent implements OnInit {
     this.budgetService
       .getBudgetsTestData()
       .pipe(
-        map((budgets: Budget[]) => {
+        map((budgets: Budget[]): Budget => {
           return budgets[0];
         })
       )

@@ -57,4 +57,5 @@ export interface CardInput {
 export interface CardSubCategory {
   sub_category_name: string;
   sub_category_amount: string;
+  is_new_row?: boolean;
 }

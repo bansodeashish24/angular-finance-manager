@@ -9,3 +9,31 @@
 .right-align-text {
   text-align: right;
 }
+
+.category-card-container {
+  position: relative;
+  .more-options {
+    bottom: 0px;
+    right: 2px;
+    border-radius: 5px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    gap: 5px;
+  }
+}
+
+.category-card-container:hover .more-options {
+  visibility: visible;
+}
+
+.secondary-icon {
+  font-size: 17px;
+  height: 17px;
+}
+
+mat-icon {
+  cursor: pointer;
+}
