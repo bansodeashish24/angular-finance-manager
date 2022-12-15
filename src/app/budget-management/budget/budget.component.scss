@@ -1,0 +1,55 @@
+@import "../../../styles/variables.scss";
+
+header {
+  background: $primary-color;
+  color: $light-text-color;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: $header-height;
+  padding: 20px;
+  padding-left: 10px;
+
+  .logo-title {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    .logo {
+      font-size: 35px;
+      margin-right: 10px;
+      height: 35px;
+      width: 35px;
+    }
+  }
+
+  nav ul {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    list-style: none;
+
+    li {
+      cursor: pointer;
+    }
+  }
+
+  .profile {
+    width: 216px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    .profile-icon {
+      font-size: 32px;
+      height: 32px;
+      width: 32px;
+    }
+  }
+}
+
+.selected-route {
+  font-weight: 600;
+  border-bottom: 1px solid white;
+}

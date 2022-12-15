@@ -1,0 +1,25 @@
+<header>
+  <div class="logo-title">
+    <mat-icon class="logo">calculate</mat-icon>
+    <h3>Finance Manager</h3>
+  </div>
+
+  <nav>
+    <ul>
+      <li routerLink="setting" routerLinkActive="selected-route">
+        Budget Setting
+      </li>
+      <li routerLink="transactions" routerLinkActive="selected-route">
+        Transactions
+      </li>
+      <li routerLink="current-budget-state" routerLinkActive="selected-route">
+        Current Balance
+      </li>
+    </ul>
+  </nav>
+
+  <div class="profile">
+    <mat-icon class="profile-icon">account_circle</mat-icon>
+  </div>
+</header>
+<router-outlet></router-outlet>
