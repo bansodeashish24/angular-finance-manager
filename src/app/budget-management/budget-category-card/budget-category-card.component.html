@@ -1,0 +1,23 @@
+<mat-expansion-panel
+  [expanded]="panelOpenState"
+  (opened)="panelOpenState = true"
+  (closed)="panelOpenState = false"
+>
+  <mat-expansion-panel-header
+    [collapsedHeight]="'40px'"
+    [expandedHeight]="'40px'"
+  >
+    <mat-panel-title> {{ budgetCategory.name }} </mat-panel-title>
+    <mat-panel-description class="right-align-text">
+      {{ budgetCategory.total_amount | currency : "INR" }}
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <table class="sub-categories">
+    <tr *ngFor="let subCategory of budgetCategory.sub_categories">
+      <td>{{ subCategory.sub_category_name }}</td>
+      <td class="right-align-text">
+        {{ subCategory.sub_category_amount | currency : "INR" }}
+      </td>
+    </tr>
+  </table>
+</mat-expansion-panel>
