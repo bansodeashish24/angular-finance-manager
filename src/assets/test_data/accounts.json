@@ -1,0 +1,14 @@
+[
+    {
+        "id": "1",
+        "name": "Acc 1 HDFC",
+        "latest_budget_id": "budget_id_1",
+        "latest_cbs_id": "cbs_id_1"
+    },
+    {
+        "id": "2",
+        "name": "Joint Acc 1 HDFC",
+        "latest_budget_id": "budget_id_2",
+        "latest_cbs_id": "cbs_id_2"
+    }
+]
