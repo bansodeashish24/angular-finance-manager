@@ -1,14 +1,59 @@
+enum AccountTypes {
+  Savings = 'Savings',
+  MutualFund = 'Mutual Fund',
+}
+
 export interface Account {
   id: string;
   name: string;
+  balance: Number;
+  account_type: AccountTypes;
   latest_budget_id: string;
   latest_cbs_id: string;
+}
+
+export interface Transaction {
+  id: string;
+  account_id: string;
+  transaction_id: string;
+  date: string;
+  withdrawal_amount: number;
+  credit_amount: number;
+  is_logged: boolean;
 }
 
 export interface Budget {
   id: string;
   account_id: string;
   fixed_monthly_income: FixedMonthlyIncome;
+  fixed_monthly_expenses: FixedMonthlyExpenses;
+  expense_categories: BudgetCategory[];
+}
+
+export interface MonthBudget extends Budget {
+  month?: string;
+  year?: number;
+}
+
+/**
+ * This will have the sum of all the
+ * expenses in the selected month.
+ */
+export interface MonthExpenditure {
+  id: string;
+  account_id: string;
+  fixed_monthly_expenses: FixedMonthlyExpenses;
+  expense_categories: BudgetCategory[];
+}
+
+/**
+ * MonthBalance = MonthBudget - MonthExpenditure
+ * NOTE: The subtraction is between each MonthBudget.category.sub_category
+ * and the corresponding MonthExpenditure.category.sub_category
+ */
+export interface MonthBalance {
+  id: string;
+  account_id: string;
   fixed_monthly_expenses: FixedMonthlyExpenses;
   expense_categories: BudgetCategory[];
 }

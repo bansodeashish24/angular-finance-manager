@@ -16,11 +16,13 @@ interface AccountValue {
 export class BudgetSettingComponent implements OnInit {
   selectedAccount = '';
   allAccounts: AccountValue[] = [];
-  budget: any;
+  selectedMonthBudget: any;
   fixedIncome: Partial<CardInput> = {};
   fixedExpenses: Partial<CardInput> = {};
   budgetCategories: Partial<CardInput>[] = [{}];
   firstBudgetSwimlaneEndIndex = 0;
+  selectedMonth: number | null = null;
+  selectedYear: string | null = null;
   constructor(private budgetService: BudgetManagementService) {}
 
   ngOnInit(): void {
@@ -36,7 +38,7 @@ export class BudgetSettingComponent implements OnInit {
           value: account.name.split(' ').join('-'),
         }));
         this.selectedAccount = this.allAccounts[0].value;
-        this.fetchLatestBudgetForAccount();
+        this.fetchSelectedMonthBudgetForAccount();
       },
       error: (error) => {
         console.log(error);
@@ -44,18 +46,17 @@ export class BudgetSettingComponent implements OnInit {
     });
   }
 
-  fetchLatestBudgetForAccount() {
-    // change implementation later to fetch only latest budget from DB
+  fetchSelectedMonthBudgetForAccount() {
     this.budgetService
-      .getBudgetsTestData()
+      .getTestMonthBudgetData(this.selectedMonth, this.selectedYear)
       .pipe(
-        map((budgets: Budget[]): Budget => {
-          return budgets[0];
+        map((budget: Budget): Budget => {
+          return budget;
         })
       )
       .subscribe({
         next: (budget: Budget) => {
-          this.budget = budget;
+          this.selectedMonthBudget = budget;
           this.initializeCards();
         },
         error: (error) => {
@@ -67,8 +68,8 @@ export class BudgetSettingComponent implements OnInit {
   initializeCards() {
     this.fixedIncome = {
       name: 'Income Per Month',
-      total_amount: this.budget.fixed_monthly_income.total_income,
-      sub_categories: this.budget.fixed_monthly_income.incomes.map(
+      total_amount: this.selectedMonthBudget.fixed_monthly_income.total_income,
+      sub_categories: this.selectedMonthBudget.fixed_monthly_income.incomes.map(
         (income: Partial<Income>) => ({
           sub_category_name: income.income_name,
           sub_category_amount: income.income_amount,
@@ -78,16 +79,18 @@ export class BudgetSettingComponent implements OnInit {
 
     this.fixedExpenses = {
       name: 'Fixed Monthly Deduction',
-      total_amount: this.budget.fixed_monthly_expenses.total_expenses,
-      sub_categories: this.budget.fixed_monthly_expenses.expenses.map(
-        (expense: Partial<Expense>) => ({
-          sub_category_name: expense.expense_name,
-          sub_category_amount: expense.expense_amount,
-        })
-      ),
+      total_amount:
+        this.selectedMonthBudget.fixed_monthly_expenses.total_expenses,
+      sub_categories:
+        this.selectedMonthBudget.fixed_monthly_expenses.expenses.map(
+          (expense: Partial<Expense>) => ({
+            sub_category_name: expense.expense_name,
+            sub_category_amount: expense.expense_amount,
+          })
+        ),
     };
 
-    this.budgetCategories = this.budget.expense_categories.map(
+    this.budgetCategories = this.selectedMonthBudget.expense_categories.map(
       (category: BudgetCategory) => {
         const budgetCategoryForCard: CardInput = {
           name: category.category_name,

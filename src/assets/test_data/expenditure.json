@@ -1,0 +1,150 @@
+{
+    "id": "budget_id_1",
+    "account_id": "1",
+    "fixed_monthly_expenses": {
+        "total_expenses": 30000.50,
+        "expenses": [
+            {
+                "expense_id": "1",
+                "expense_name": "Giving 1",
+                "expense_amount": 3000
+            },
+            {
+                "expense_id": "2",
+                "expense_name": "Giving 2",
+                "expense_amount": 4000
+            },
+            {
+                "expense_id": "3",
+                "expense_name": "Saving: Short Term",
+                "expense_amount": 10000
+            },
+            {
+                "expense_id": "4",
+                "expense_name": "Saving: Long Term",
+                "expense_amount": 10000
+            }
+        ]
+    },
+    "expense_categories": [
+        {
+            "category_id": "1",
+            "category_name": "Housing Expenses",
+            "category_total_amount": 200000,
+            "sub_categories": [
+                {
+                    "sub_category_id": "1",
+                    "sub_category_name": "House Rent",
+                    "sub_category_amount": 15750
+                },
+                {
+                    "sub_category_id": "2",
+                    "sub_category_name": "Maintenance",
+                    "sub_category_amount": 2000
+                }
+            ]
+        },
+        {
+            "category_id": "2",
+            "category_name": "Living Expenses",
+            "category_total_amount": 200000,
+            "sub_categories": [
+                {
+                    "sub_category_id": "1",
+                    "sub_category_name": "House Rent",
+                    "sub_category_amount": 15750
+                },
+                {
+                    "sub_category_id": "2",
+                    "sub_category_name": "Maintenance",
+                    "sub_category_amount": 2000
+                }
+            ]
+        },
+        {
+            "category_id": "3",
+            "category_name": "Automobile Expenses",
+            "category_total_amount": 200000,
+            "sub_categories": [
+                {
+                    "sub_category_id": "1",
+                    "sub_category_name": "House Rent",
+                    "sub_category_amount": 15750
+                },
+                {
+                    "sub_category_id": "2",
+                    "sub_category_name": "Maintenance",
+                    "sub_category_amount": 2000
+                }
+            ]
+        },
+        {
+            "category_id": "4",
+            "category_name": "Recreational Expenses",
+            "category_total_amount": 200000,
+            "sub_categories": [
+                {
+                    "sub_category_id": "1",
+                    "sub_category_name": "House Rent",
+                    "sub_category_amount": 15750
+                },
+                {
+                    "sub_category_id": "2",
+                    "sub_category_name": "Maintenance",
+                    "sub_category_amount": 2000
+                }
+            ]
+        },
+        {
+            "category_id": "5",
+            "category_name": "Clothing Expenses",
+            "category_total_amount": 200000,
+            "sub_categories": [
+                {
+                    "sub_category_id": "1",
+                    "sub_category_name": "House Rent",
+                    "sub_category_amount": 15750
+                },
+                {
+                    "sub_category_id": "2",
+                    "sub_category_name": "Maintenance",
+                    "sub_category_amount": 2000
+                }
+            ]
+        },
+        {
+            "category_id": "6",
+            "category_name": "Medical Expenses",
+            "category_total_amount": 200000,
+            "sub_categories": [
+                {
+                    "sub_category_id": "1",
+                    "sub_category_name": "House Rent",
+                    "sub_category_amount": 15750
+                },
+                {
+                    "sub_category_id": "2",
+                    "sub_category_name": "Maintenance",
+                    "sub_category_amount": 2000
+                }
+            ]
+        },
+        {
+            "category_id": "7",
+            "category_name": "Gift Expenses",
+            "category_total_amount": 200000,
+            "sub_categories": [
+                {
+                    "sub_category_id": "1",
+                    "sub_category_name": "House Rent",
+                    "sub_category_amount": 15750
+                },
+                {
+                    "sub_category_id": "2",
+                    "sub_category_name": "Maintenance",
+                    "sub_category_amount": 2000
+                }
+            ]
+        }
+    ]
+}
